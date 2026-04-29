@@ -1,7 +1,7 @@
 import random
 import time
 import sys
-from wcwidth import wcwidth
+
 
 WIDTH = 134
 HEIGHT = 30
