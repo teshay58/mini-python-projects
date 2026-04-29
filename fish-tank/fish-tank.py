@@ -1,8 +1,8 @@
 import random
 import time
 import sys
-
 from wcwidth import wcwidth
+
 WIDTH = 134
 HEIGHT = 30
 
@@ -124,7 +124,7 @@ def draw_field(field,elapsed_time, fps):
                 row_colored += YELLOW + ch    
             else:
                 row_colored += RESET + ch
-        row_colored += RESET  # сброс цвета один раз в конце
+        row_colored += RESET 
 
         sys.stdout.write('\r' + row_colored + ' ' * 40 + '\n')
         sys.stdout.flush()
@@ -395,15 +395,16 @@ while True:
     sys.stdout.write(f"\033[{HEIGHT}F")
     elapsed_time = round(time.perf_counter() - start)+1
     
-    # Рисуем поле
+    # 
     draw_field(field,elapsed_time,round(k / elapsed_time,1))
     ###
 
-    # Симуляция воздуха
+    # air simulation
     generate_air(field,air_coords)
     air_movement(field,air_coords)
     ###
 
+    
     seaweed_movement(field,seaweed_coords,(k % 2 == 0))
 
     if k % 10 == 0:
